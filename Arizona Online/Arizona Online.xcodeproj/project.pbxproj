@@ -10,22 +10,9 @@
 		2B8550682DAE636C00ED724F /* Arizona Online.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arizona Online.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		2B85507A2DAE638600ED724F /* Exceptions for "Arizona Online" folder in "Arizona Online" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Arizona-Online-Info.plist",
-			);
-			target = 2B8550672DAE636C00ED724F /* Arizona Online */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2B85506A2DAE636C00ED724F /* Arizona Online */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				2B85507A2DAE638600ED724F /* Exceptions for "Arizona Online" folder in "Arizona Online" target */,
-			);
 			path = "Arizona Online";
 			sourceTree = "<group>";
 		};
