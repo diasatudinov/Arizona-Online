@@ -1,5 +1,5 @@
 import Foundation
 
-enum FLFonts: String {
+enum AOFonts: String {
     case regular = "HoltwoodOneSC-Regular"
 }
