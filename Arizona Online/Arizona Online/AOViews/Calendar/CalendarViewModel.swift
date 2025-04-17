@@ -1,29 +1,30 @@
+
 import SwiftUI
 
 
 class CalendarViewModel: ObservableObject {
     
-    @Published var bonuses: [Bonus] = [
-        Bonus(day: 1, amount: 50, isCollected: false),
-        Bonus(day: 2, amount: 100, isCollected: false),
-        Bonus(day: 3, amount: 100, isCollected: false),
-        Bonus(day: 4, amount: 150, isCollected: false),
-        Bonus(day: 5, amount: 150, isCollected: false),
-        Bonus(day: 6, amount: 200, isCollected: false),
-        Bonus(day: 7, amount: 200, isCollected: false),
+    @Published var bonuses: [BonusAO] = [
+        BonusAO(day: 1, amount: 50, isCollected: false),
+        BonusAO(day: 2, amount: 50, isCollected: false),
+        BonusAO(day: 3, amount: 50, isCollected: false),
+        BonusAO(day: 4, amount: 50, isCollected: false),
+        BonusAO(day: 5, amount: 50, isCollected: false),
+        BonusAO(day: 6, amount: 50, isCollected: false),
+        BonusAO(day: 7, amount: 50, isCollected: false),
     
     ] {
         didSet {
-            saveAchievementsItem()
+            saveBonus()
         }
     }
     
     init() {
-        loadAchievementsItem()
+        loadBonus()
         
     }
     
-    private let userDefaultsBonusesKey = "userDefaultsBonusesKey"
+    private let userDefaultsBonusesKey = "bonuseKeyAO"
     
     func resetBonuses() {
         for index in Range(0...bonuses.count - 1) {
@@ -31,7 +32,7 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    func bonusesToggle(_ bonus: Bonus) {
+    func bonusesToggle(_ bonus: BonusAO) {
         guard let index = bonuses.firstIndex(where: { $0.id == bonus.id }) else {
             return
         }
@@ -40,16 +41,16 @@ class CalendarViewModel: ObservableObject {
         
     }
     
-    func saveAchievementsItem() {
+    func saveBonus() {
         if let encodedData = try? JSONEncoder().encode(bonuses) {
             UserDefaults.standard.set(encodedData, forKey: userDefaultsBonusesKey)
         }
         
     }
     
-    func loadAchievementsItem() {
+    func loadBonus() {
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsBonusesKey),
-           let loadedItem = try? JSONDecoder().decode([Bonus].self, from: savedData) {
+           let loadedItem = try? JSONDecoder().decode([BonusAO].self, from: savedData) {
             bonuses = loadedItem
         } else {
             print("No saved data found")
@@ -57,7 +58,7 @@ class CalendarViewModel: ObservableObject {
     }
 }
 
-struct Bonus: Codable, Hashable {
+struct BonusAO: Codable, Hashable {
     var id = UUID()
     var day: Int
     var amount: Int
