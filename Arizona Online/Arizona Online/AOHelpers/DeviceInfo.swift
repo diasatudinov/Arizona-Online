@@ -1,7 +1,7 @@
 import UIKit
 
-class DeviceInfo {
-    static let shared = DeviceInfo()
+class AODeviceInfo {
+    static let shared = AODeviceInfo()
     
     var deviceType: UIUserInterfaceIdiom
     

@@ -8,9 +8,9 @@ struct MenuTextBg: View {
                 .resizable()
                 .scaledToFit()
             
-            TextWithBorder(text: text, font: .system(size: DeviceInfo.shared.deviceType == .pad ?  48:24, weight: .bold), textColor: .white, borderColor: .black, borderWidth: 1)
-                .offset(y: DeviceInfo.shared.deviceType == .pad ? -8:-4)
-        }.frame(height: DeviceInfo.shared.deviceType == .pad ? 180:90)
+            TextWithBorder(text: text, font: .system(size: AODeviceInfo.shared.deviceType == .pad ?  48:24, weight: .bold), textColor: .white, borderColor: .black, borderWidth: 1)
+                .offset(y: AODeviceInfo.shared.deviceType == .pad ? -8:-4)
+        }.frame(height: AODeviceInfo.shared.deviceType == .pad ? 180:90)
     }
 }
 
