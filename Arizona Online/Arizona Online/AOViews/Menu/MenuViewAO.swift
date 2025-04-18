@@ -1,15 +1,16 @@
 import SwiftUI
 
 struct MenuViewAO: View {
-    @State private var showGame = false
-    @State private var showRules = false
-    @State private var showShop = false
+    @State private var showPlay = false
+    @State private var showStore = false
     @State private var showAchievements = false
-    @State private var showSettings = false
+    @State private var showObjectives = false
+    @State private var showCalendar = false
     
-//    @StateObject var settingsVM = SettingsViewModelDC()
-//    @StateObject var achievementsVM = AchievementsViewModel()
-//    @StateObject var storeVM = StoreViewModelDC()
+    @StateObject var achievementsVM = AchievementsViewModel()
+    @StateObject var storeVM = StoreViewModelAO()
+    @StateObject var objectivesVM = ObjectivesViewModel()
+    @StateObject var calendarVM = CalendarViewModel()
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -37,7 +38,7 @@ struct MenuViewAO: View {
                         VStack {
                             
                             Button {
-                                showRules = true
+                                showPlay = true
                             } label: {
                                 MenuTextBg(text: "Play")
                             }
@@ -45,13 +46,13 @@ struct MenuViewAO: View {
                             HStack(spacing: 20) {
                                 Spacer()
                                 Button {
-                                    showGame = true
+                                    showStore = true
                                 } label: {
                                     MenuTextBg(text: "Shop")
                                 }
                                 
                                 Button {
-                                    showShop = true
+                                    showAchievements = true
                                 } label: {
                                     MenuTextBg(text: "Achievements")
                                 }
@@ -61,13 +62,13 @@ struct MenuViewAO: View {
                             HStack(spacing: 20) {
                                 
                                 Button {
-                                    showAchievements = true
+                                    showObjectives = true
                                 } label: {
                                     MenuTextBg(text: "Objectives")
                                 }
                                 
                                 Button {
-                                    showSettings = true
+                                    showCalendar = true
                                 } label: {
                                     MenuTextBg(text: "Rewards \nCalendar")
                                 }
@@ -98,15 +99,20 @@ struct MenuViewAO: View {
 //                        DCSoundManager.shared.stopBackgroundMusic()
 //                    }
 //                }
-                .fullScreenCover(isPresented: $showGame) {
+                .fullScreenCover(isPresented: $showPlay) {
+                    
                 }
-                .fullScreenCover(isPresented: $showRules) {
+                .fullScreenCover(isPresented: $showStore) {
+                    StoreView(viewModel: storeVM)
                 }
                 .fullScreenCover(isPresented: $showAchievements) {
+                    AchievementsView(viewModel: achievementsVM)
                 }
-                .fullScreenCover(isPresented: $showSettings) {
+                .fullScreenCover(isPresented: $showObjectives) {
+                    ObjectivesView(viewModel: objectivesVM)
                 }
-                .fullScreenCover(isPresented: $showShop) {
+                .fullScreenCover(isPresented: $showCalendar) {
+                    CalendarView(viewModel: calendarVM)
                 }
         }
     }
