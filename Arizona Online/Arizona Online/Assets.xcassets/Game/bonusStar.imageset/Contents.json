@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "bonusStar.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
