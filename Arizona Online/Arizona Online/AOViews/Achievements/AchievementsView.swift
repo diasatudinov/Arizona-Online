@@ -1,10 +1,3 @@
-//
-//  AchievementsView.swift
-//  Arizona Online
-//
-//  Created by Dias Atudinov on 17.04.2025.
-//
-
 import SwiftUI
 
 struct AchievementsView: View {
@@ -57,22 +50,30 @@ struct AchievementsView: View {
             }
             
             VStack {
-                HStack {
-                    HStack(alignment: .top) {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                            
-                        } label: {
-                            Image(.backIconAO)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: AODeviceInfo.shared.deviceType == .pad ? 150:75)
-                        }
-                        Spacer()
-                        MoneyViewDC()
-                    }.padding([.horizontal, .top])
+                
+                ZStack {
+                    HStack {
+                        TextWithBorder(text: "Achievements", font: .custom(AOFonts.regular.rawValue, size: 28), textColor: .white, borderColor: .black, borderWidth: 1)
+                    }
+                    
+                    HStack {
+                        HStack(alignment: .top) {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                                
+                            } label: {
+                                Image(.backIconAO)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: AODeviceInfo.shared.deviceType == .pad ? 150:75)
+                            }
+                            Spacer()
+                            MoneyViewDC()
+                        }.padding([.horizontal, .top])
+                    }
                 }
-                Spacer()
+                    Spacer()
+                
             }
         }.background(
             ZStack {
