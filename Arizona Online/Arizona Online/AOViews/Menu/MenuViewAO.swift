@@ -100,7 +100,7 @@ struct MenuViewAO: View {
 //                    }
 //                }
                 .fullScreenCover(isPresented: $showPlay) {
-                    
+                    GameView()
                 }
                 .fullScreenCover(isPresented: $showStore) {
                     StoreView(viewModel: storeVM)
