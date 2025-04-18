@@ -1,30 +1,38 @@
-//
-//  ShopViewModelGE.swift
-//  Arizona Online
-//
-//  Created by Dias Atudinov on 18.04.2025.
-//
-
-
 import SwiftUI
 
-class ShopViewModelGE: ObservableObject {
+enum StoreSection: Codable, Hashable {
+    case backgrounds
+    case bird
+}
+
+class StoreViewModelAO: ObservableObject {
     @Published var shopTeamItems: [Item] = [
         
-        Item(name: "bg1", image: "gameBg1GE", icon: "icon1GE", section: .backgrounds, price: 500),
-        Item(name: "bg2", image: "gameBg4GE", icon: "icon2GE", section: .backgrounds, price: 500),
-        Item(name: "bg3", image: "gameBg3GE", icon: "icon3GE", section: .backgrounds, price: 500),
-        Item(name: "bg4", image: "gameBg2GE", icon: "icon4GE", section: .backgrounds, price: 500),
+        Item(name: "bg1", image: "gameBg1AO", icon: "iconBg1AO", section: .backgrounds, price: 100),
+        Item(name: "bg2", image: "gameBg2AO", icon: "iconBg2AO", section: .backgrounds, price: 100),
+        Item(name: "bg3", image: "gameBg3AO", icon: "iconBg3AO", section: .backgrounds, price: 100),
 
-        Item(name: "person1", image: "gamePerson1GE", icon: "peronIcon1GE", section: .persons, price: 200, attackerIcon: "attackerType1", defenderIcon: "defenderType1", kingIcon: "kingType1"),
-        Item(name: "person2", image: "gamePerson2GE", icon: "peronIcon2GE", section: .persons, price: 200, attackerIcon: "attackerType2", defenderIcon: "defenderType2", kingIcon: "kingType2"),
-        Item(name: "person3", image: "gamePerson3GE", icon: "peronIcon3GE", section: .persons, price: 200, attackerIcon: "attackerType3", defenderIcon: "defenderType3", kingIcon: "kingType3"),
-        Item(name: "person4", image: "gamePerson4GE", icon: "peronIcon4GE", section: .persons, price: 200, attackerIcon: "attackerType4", defenderIcon: "defenderType4", kingIcon: "kingType4"),
+        
+        Item(name: "bird1", image: "gameBg3GE", icon: "iconBird1AO", section: .bird, price: 100),
+        Item(name: "bird2", image: "gameBg3GE", icon: "iconBird2AO", section: .bird, price: 100),
+        Item(name: "bird3", image: "gameBg3GE", icon: "iconBird3AO", section: .bird, price: 100),
+        Item(name: "bird4", image: "gameBg3GE", icon: "iconBird4AO", section: .bird, price: 100),
+        
+        Item(name: "bird5", image: "gameBg3GE", icon: "iconBird5AO", section: .bird, price: 100),
+        Item(name: "bird6", image: "gameBg3GE", icon: "iconBird6AO", section: .bird, price: 100),
+        Item(name: "bird7", image: "gameBg3GE", icon: "iconBird7AO", section: .bird, price: 100),
+        Item(name: "bird8", image: "gameBg3GE", icon: "iconBird8AO", section: .bird, price: 100),
+        
+        Item(name: "bird9", image: "gameBg3GE", icon: "iconBird9AO", section: .bird, price: 100),
+        Item(name: "bird10", image: "gameBg3GE", icon: "iconBird10AO", section: .bird, price: 100),
+        Item(name: "bird11", image: "gameBg3GE", icon: "iconBird11AO", section: .bird, price: 100),
+        Item(name: "bird12", image: "gameBg3GE", icon: "iconBird12AO", section: .bird, price: 100),
+        
     ]
     
     @Published var boughtItems: [Item] = [
         Item(name: "bg1", image: "gameBg1GE", icon: "icon1GE", section: .backgrounds, price: 500),
-        Item(name: "person1", image: "gamePerson1GE", icon: "peronIcon1GE", section: .persons, price: 200, attackerIcon: "attackerType1", defenderIcon: "defenderType1", kingIcon: "kingType1"),
+        Item(name: "bird1", image: "gameBg3GE", icon: "iconBird1AO", section: .bird, price: 500),
     ] {
         didSet {
             saveBoughtItem()
@@ -49,9 +57,9 @@ class ShopViewModelGE: ObservableObject {
         loadBoughtItem()
     }
     
-    private let userDefaultsBgKey = "userDefaultsBgKey"
-    private let userDefaultsPersonKey = "userDefaultsPersonKey"
-    private let userDefaultsBoughtKey = "boughtItem"
+    private let userDefaultsBgKey = "BgKey"
+    private let userDefaultsPersonKey = "BirdKey"
+    private let userDefaultsBoughtKey = "boughtItems"
 
     
     func saveCurrentBg() {
@@ -85,7 +93,7 @@ class ShopViewModelGE: ObservableObject {
            let loadedItem = try? JSONDecoder().decode(Item.self, from: savedData) {
             currentPersonItem = loadedItem
         } else {
-            currentPersonItem = shopTeamItems[4]
+            currentPersonItem = shopTeamItems[3]
             print("No saved data found")
         }
     }
@@ -113,9 +121,6 @@ struct Item: Codable, Hashable {
     var name: String
     var image: String
     var icon: String
-    var section: ShopSection
+    var section: StoreSection
     var price: Int
-    var attackerIcon = ""
-    var defenderIcon = ""
-    var kingIcon = ""
 }
