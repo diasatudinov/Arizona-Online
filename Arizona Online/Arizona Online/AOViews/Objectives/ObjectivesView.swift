@@ -15,8 +15,8 @@ struct ObjectivesView: View {
                         .resizable()
                         .scaledToFit()
                     
-                    TextWithBorder(text: viewModel.timeLeftFormatted, font: .custom(AOFonts.regular.rawValue, size: 24), textColor: .white, borderColor: .black, borderWidth: 1)
-                }.frame(height: 50)
+                    TextWithBorder(text: viewModel.timeLeftFormatted, font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 48:24), textColor: .white, borderColor: .black, borderWidth: 1)
+                }.frame(height: AODeviceInfo.shared.deviceType == .pad ? 100:50)
                 
                 
                 ZStack {
@@ -25,9 +25,9 @@ struct ObjectivesView: View {
                         .scaledToFit()
                     
                     VStack {
-                        TextWithBorder(text: "Objectives", font: .custom(AOFonts.regular.rawValue, size: 28), textColor: .white, borderColor: .black, borderWidth: 1)
+                        TextWithBorder(text: "Objectives", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 56:28), textColor: .white, borderColor: .black, borderWidth: 1)
                         
-                        TextWithBorder(text: viewModel.currentGoal, font: .custom(AOFonts.regular.rawValue, size: 16), textColor: .white, borderColor: .black, borderWidth: 1)
+                        TextWithBorder(text: viewModel.currentGoal, font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 32:16), textColor: .white, borderColor: .black, borderWidth: 1)
                         if let index = viewModel.objectives.firstIndex(where: { $0.text == viewModel.currentGoal }) {
                             
                             Button {
@@ -44,8 +44,8 @@ struct ObjectivesView: View {
                                         .resizable()
                                         .scaledToFit()
                                     
-                                    TextWithBorder(text: "Reward", font: .custom(AOFonts.regular.rawValue, size: 20), textColor: .white, borderColor: .black, borderWidth: 1)
-                                }.frame(height: 55)
+                                    TextWithBorder(text: "Reward", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 40:20), textColor: .white, borderColor: .black, borderWidth: 1)
+                                }.frame(height: AODeviceInfo.shared.deviceType == .pad ? 110:55)
                                 
                                 
                             }
@@ -54,7 +54,7 @@ struct ObjectivesView: View {
                         
                     }
                     
-                }.frame(width: 477, height: 234)
+                }.frame(width: AODeviceInfo.shared.deviceType == .pad ? 954:477, height: AODeviceInfo.shared.deviceType == .pad ? 468:234)
             }
             VStack {
                 HStack {

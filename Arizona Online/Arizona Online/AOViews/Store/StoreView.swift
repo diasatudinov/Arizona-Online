@@ -1,10 +1,3 @@
-//
-//  StoreView.swift
-//  Arizona Online
-//
-//  Created by Dias Atudinov on 18.04.2025.
-//
-
 import SwiftUI
 
 struct StoreView: View {
@@ -46,18 +39,18 @@ struct StoreView: View {
                             Image(.buttonBgAO)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 55)
+                                .frame(height: AODeviceInfo.shared.deviceType == .pad ? 110:55)
                             
-                            TextWithBorder(text: "Birds", font: .custom(AOFonts.regular.rawValue, size: 20), textColor: .white, borderColor: .black, borderWidth: 1)
+                            TextWithBorder(text: "Birds", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 40:20), textColor: .white, borderColor: .black, borderWidth: 1)
                         }.offset(y: section == .bird ? -10: 0)
                         
                         ZStack {
                             Image(.buttonBgAO)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 55)
+                                .frame(height: AODeviceInfo.shared.deviceType == .pad ? 110:55)
                             
-                            TextWithBorder(text: "Arenas", font: .custom(AOFonts.regular.rawValue, size: 20), textColor: .white, borderColor: .black, borderWidth: 1)
+                            TextWithBorder(text: "Arenas", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 40:20), textColor: .white, borderColor: .black, borderWidth: 1)
                         }.offset(y: section == .backgrounds ? -10: 0)
                     }
                     Spacer()
@@ -79,7 +72,7 @@ struct StoreView: View {
             VStack {
                 ZStack {
                     HStack {
-                        TextWithBorder(text: "Shop", font: .custom(AOFonts.regular.rawValue, size: 48), textColor: .white, borderColor: .black, borderWidth: 1)
+                        TextWithBorder(text: "Shop", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 96:48), textColor: .white, borderColor: .black, borderWidth: 1)
                     }
                     
                     HStack {
@@ -121,7 +114,7 @@ struct StoreView: View {
                 Image(item.icon)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: section == .bird ? 100: 86)
+                    .frame(height: section == .bird ? (AODeviceInfo.shared.deviceType == .pad ? 200:100): (AODeviceInfo.shared.deviceType == .pad ? 172:86))
                 
                 Button {
                     if viewModel.boughtItems.contains(where: { $0.name == item.name }) {
@@ -149,9 +142,9 @@ struct StoreView: View {
                                     Image(.buttonBgAO)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 38)
+                                        .frame(height: AODeviceInfo.shared.deviceType == .pad ? 76:38)
                                     
-                                    TextWithBorder(text: "Selected", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    TextWithBorder(text: "Selected", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                                     
                                 }
                             } else {
@@ -159,9 +152,9 @@ struct StoreView: View {
                                     Image(.buttonBgAO)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 38)
+                                        .frame(height: AODeviceInfo.shared.deviceType == .pad ? 76:38)
                                     
-                                    TextWithBorder(text: "Select", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    TextWithBorder(text: "Select", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                                     
                                 }
                             }
@@ -171,9 +164,9 @@ struct StoreView: View {
                                     Image(.buttonBgAO)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 38)
+                                        .frame(height: AODeviceInfo.shared.deviceType == .pad ? 76:38)
                                     
-                                    TextWithBorder(text: "Selected", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    TextWithBorder(text: "Selected", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                                     
                                 }
                             } else {
@@ -181,9 +174,9 @@ struct StoreView: View {
                                     Image(.buttonBgAO)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 38)
+                                        .frame(height: AODeviceInfo.shared.deviceType == .pad ? 76:38)
                                     
-                                    TextWithBorder(text: "Select", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    TextWithBorder(text: "Select", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                                     
                                 }
                             }
@@ -195,15 +188,15 @@ struct StoreView: View {
                                 Image(.buttonBgAO)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: 38)
+                                    .frame(height: AODeviceInfo.shared.deviceType == .pad ? 76:38)
                                 HStack {
-                                    TextWithBorder(text: "Buy", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    TextWithBorder(text: "Buy", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                                     Image(.starIconAO)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 14)
+                                        .frame(height: AODeviceInfo.shared.deviceType == .pad ? 28:14)
                                     
-                                    TextWithBorder(text: "\(item.price)", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    TextWithBorder(text: "\(item.price)", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                                 }
                             }
                         } else {
@@ -211,15 +204,15 @@ struct StoreView: View {
                                 Image(.buttonOffBgAO)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: 38)
+                                    .frame(height: AODeviceInfo.shared.deviceType == .pad ? 76:38)
                                 HStack {
-                                    TextWithBorder(text: "Buy", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    TextWithBorder(text: "Buy", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                                     Image(.starIconAO)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 14)
+                                        .frame(height: AODeviceInfo.shared.deviceType == .pad ? 28:14)
                                     
-                                    TextWithBorder(text: "\(item.price)", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    TextWithBorder(text: "\(item.price)", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                                 }
                             }
                         }
@@ -227,7 +220,7 @@ struct StoreView: View {
                 }
             }
             
-        }.frame(height: 189)
+        }.frame(height: AODeviceInfo.shared.deviceType == .pad ? 378:189)
         
     }
     

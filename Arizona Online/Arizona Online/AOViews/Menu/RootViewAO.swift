@@ -1,11 +1,3 @@
-//
-//  RootViewAO.swift
-//  Arizona Online
-//
-//  Created by Dias Atudinov on 22.04.2025.
-//
-
-
 import SwiftUI
 
 struct RootViewAO: View {
@@ -23,7 +15,7 @@ struct RootViewAO: View {
                     if isLoading {
                         SplashScreen()
                     } else {
-                        MenuViewDC()
+                        MenuViewAO()
                             .onAppear {
                                 AppDelegate.orientationLock = .landscape
                                 setOrientation(.landscapeRight)
@@ -37,8 +29,9 @@ struct RootViewAO: View {
             }
         }
         .onAppear {
-            updateIfNeeded()
-            print("\(Links.shared.finalURL)")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                updateIfNeeded()
+            }
            
         }
     }

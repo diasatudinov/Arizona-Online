@@ -87,18 +87,6 @@ struct MenuViewAO: View {
                     
                     
                 )
-//                .onAppear {
-//                    if settingsVM.musicEnabled {
-//                        DCSoundManager.shared.playBackgroundMusic()
-//                    }
-//                }
-//                .onChange(of: settingsVM.musicEnabled) { enabled in
-//                    if enabled {
-//                        DCSoundManager.shared.playBackgroundMusic()
-//                    } else {
-//                        DCSoundManager.shared.stopBackgroundMusic()
-//                    }
-//                }
                 .fullScreenCover(isPresented: $showPlay) {
                     GameView()
                 }
