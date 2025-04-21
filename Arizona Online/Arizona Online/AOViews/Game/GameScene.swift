@@ -1,11 +1,3 @@
-//
-//  GameScene.swift
-//  Arizona Online
-//
-//  Created by Dias Atudinov on 18.04.2025.
-//
-
-
 import SpriteKit
 
 struct PhysicsCategory {
@@ -53,13 +45,13 @@ class GameScene: SKScene {
         guard let item = storeVM.currentPersonItem else { return }
         player = SKSpriteNode(imageNamed: item.icon)
         player.setScale(0.5)
-        player.size = CGSize(width: 80, height: 80)
+        player.size = CGSize(width: AODeviceInfo.shared.deviceType == .pad ? 160:80, height: AODeviceInfo.shared.deviceType == .pad ? 160:80)
         player.position = CGPoint(x: size.width/2, y: size.height/2)
         player.zPosition = 10
         addChild(player)
         
         // 4) UI: кнопки
-        let btnSize = CGSize(width: 80, height: 80)
+        let btnSize = CGSize(width: AODeviceInfo.shared.deviceType == .pad ? 160:80, height: AODeviceInfo.shared.deviceType == .pad ? 160:80)
         leftButton = SKSpriteNode(imageNamed: "backIconAO")
         leftButton.size = btnSize
         leftButton.position = CGPoint(x: 100, y: 100)
@@ -180,7 +172,7 @@ class GameScene: SKScene {
         let num = Int.random(in: Range(1...3))
         let enemy = SKSpriteNode(imageNamed: "enemyBird\(num)")
         enemy.name = "enemy"
-        enemy.setScale(0.4)
+        enemy.setScale(AODeviceInfo.shared.deviceType == .pad ? 0.8:0.4)
         enemy.zPosition = 5
         
         // Выбираем сторону спауна

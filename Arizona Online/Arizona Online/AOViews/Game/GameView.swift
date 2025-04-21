@@ -1,20 +1,8 @@
-//
-//  GameView.swift
-//  Arizona Online
-//
-//  Created by Dias Atudinov on 18.04.2025.
-//
-
-
 import SwiftUI
 import SpriteKit
 
 struct GameView: View {
     @Environment(\.presentationMode) var presentationMode
-
-//    @ObservedObject var storeVM: StoreViewModelDC
-//    @ObservedObject var achievementVM: AchievementsViewModel
-//    @StateObject var viewModel = GameViewModel()
     
     @State private var gameScene: GameScene = {
         let scene = GameScene(size: UIScreen.main.bounds.size)

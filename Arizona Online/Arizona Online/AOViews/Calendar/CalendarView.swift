@@ -23,33 +23,33 @@ struct CalendarView: View {
                     .scaledToFit()
                 
                 VStack(spacing: 12) {
-                    TextWithBorder(text: "Rewards Calendar", font: .custom(AOFonts.regular.rawValue, size: 28), textColor: .white, borderColor: .black, borderWidth: 1)
+                    TextWithBorder(text: "Rewards Calendar", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 56:28), textColor: .white, borderColor: .black, borderWidth: 1)
                     
-                    HStack(spacing: 3) {
+                    HStack(spacing: AODeviceInfo.shared.deviceType == .pad ? 6:3) {
                         ForEach(viewModel.bonuses, id: \.self) { bonus in
                             VStack {
                                 ZStack {
                                     Image(.bonusBg)
                                         .resizable()
                                         .scaledToFit()
-                                    VStack(spacing: 3) {
-                                        TextWithBorder(text: "Day \(bonus.day)", font: .custom(AOFonts.regular.rawValue, size: 12), textColor: .white, borderColor: .black, borderWidth: 1)
+                                    VStack(spacing: AODeviceInfo.shared.deviceType == .pad ? 6:3) {
+                                        TextWithBorder(text: "Day \(bonus.day)", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 24:12), textColor: .white, borderColor: .black, borderWidth: 1)
                                         HStack(spacing: 3) {
                                             Image(.starIconAO)
                                                 .resizable()
                                                 .scaledToFit()
-                                                .frame(height: 18)
-                                            TextWithBorder(text: "\(bonus.amount)", font: .custom(AOFonts.regular.rawValue, size: 12), textColor: .white, borderColor: .black, borderWidth: 1)
+                                                .frame(height: AODeviceInfo.shared.deviceType == .pad ? 36:18)
+                                            TextWithBorder(text: "\(bonus.amount)", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 24:12), textColor: .white, borderColor: .black, borderWidth: 1)
                                         }
                                     }
                                     
-                                }.frame(height: 64)
+                                }.frame(height: AODeviceInfo.shared.deviceType == .pad ? 128:64)
                                 
                                 if bonus.isCollected {
                                     Image(.checkIconAO)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 34)
+                                        .frame(height: AODeviceInfo.shared.deviceType == .pad ? 68:34)
                                 } else {
                                     if openBonus >= bonus.day {
                                         if !bonus.isCollected {
@@ -66,17 +66,17 @@ struct CalendarView: View {
                                                 Image(.buttonBgAO)
                                                     .resizable()
                                                     .scaledToFit()
-                                                    .frame(height: 17)
-                                                TextWithBorder(text: "GET", font: .custom(AOFonts.regular.rawValue, size: 8), textColor: .white, borderColor: .black, borderWidth: 1)
+                                                    .frame(height: AODeviceInfo.shared.deviceType == .pad ? 34:17)
+                                                TextWithBorder(text: "GET", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 16:8), textColor: .white, borderColor: .black, borderWidth: 1)
                                                 
-                                            }.frame(height: 34)
+                                            }.frame(height: AODeviceInfo.shared.deviceType == .pad ? 68:34)
                                         }
                                         }
                                     } else {
                                         Image(.xmarkIconAO)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: 34)
+                                            .frame(height: AODeviceInfo.shared.deviceType == .pad ? 68:34)
                                     }
                                 }
                                 
@@ -86,7 +86,7 @@ struct CalendarView: View {
                 }
                 
                 
-            }.frame(width: 477, height: 234)
+            }.frame(width: AODeviceInfo.shared.deviceType == .pad ? 954:477, height: AODeviceInfo.shared.deviceType == .pad ? 468:234)
             
             
             

@@ -96,27 +96,27 @@ struct AchievementsView: View {
                 Image(item.isAchieved ? "\(item.image)" : "\(item.image)Off")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 108)
+                    .frame(height: AODeviceInfo.shared.deviceType == .pad ? 216:108)
                 
-                TextWithBorder(text: item.text, font: .custom(AOFonts.regular.rawValue, size: 14), textColor: .white, borderColor: .black, borderWidth: 1)
+                TextWithBorder(text: item.text, font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 28:14), textColor: .white, borderColor: .black, borderWidth: 1)
                 
-                TextWithBorder(text: item.subtitle, font: .custom(AOFonts.regular.rawValue, size: 10), textColor: .white, borderColor: .black, borderWidth: 1)
+                TextWithBorder(text: item.subtitle, font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 20:10), textColor: .white, borderColor: .black, borderWidth: 1)
                     .padding(.bottom)
                 
                 ZStack {
                     Image(item.isAchieved ? .buttonBgAO: .buttonOffBgAO)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 38)
+                        .frame(height: AODeviceInfo.shared.deviceType == .pad ? 76:38)
                     
-                    TextWithBorder(text: "Received", font: .custom(AOFonts.regular.rawValue, size: 15), textColor: .white, borderColor: .black, borderWidth: 1)
+                    TextWithBorder(text: "Received", font: .custom(AOFonts.regular.rawValue, size: AODeviceInfo.shared.deviceType == .pad ? 30:15), textColor: .white, borderColor: .black, borderWidth: 1)
                 }.onTapGesture {
                     viewModel.achieveToggle(item)
                 }
                 .padding(.bottom)
             }
             
-        }.frame(height: 264)
+        }.frame(height: AODeviceInfo.shared.deviceType == .pad ? 528:264)
         
     }
 }
